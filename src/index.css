@@ -279,34 +279,30 @@ nav.wrap {
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  background:
-    radial-gradient(circle at 82% 20%, #ffffff55 0%, transparent 45%),
-    linear-gradient(155deg, #e7ddd0 0%, #cbb9ab 38%, #a68f82 68%, #6f5b53 100%);
+  background: var(--charcoal);
 }
-.hero-tex {
+.hero-video {
   position: absolute;
-  inset: -5%;
-  opacity: 0.5;
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: heroZoom 22s ease-in-out infinite alternate;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover;
+  z-index: 0;
 }
-.hero-gown {
+.hero-overlay {
   position: absolute;
-  right: 6%;
-  bottom: 0;
-  height: 92%;
-  opacity: 0.16;
-  animation: heroZoom 22s ease-in-out infinite alternate;
-}
-@keyframes heroZoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.06);
-  }
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 16, 0.15) 0%,
+    rgba(17, 17, 16, 0.4) 50%,
+    rgba(17, 17, 16, 0.8) 100%
+  );
+  z-index: 1;
 }
 .hero-content {
   position: relative;
