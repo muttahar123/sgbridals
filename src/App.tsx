@@ -54,7 +54,7 @@ function App() {
     <>
       {!preloaderRemoved && (
         <div id="preloader" className={preloaderGone ? 'gone' : ''}>
-          <div className="mark">S &amp; G</div>
+          <div className="mark"><img src="/logo.png" alt="" /></div>
         </div>
       )}
 
