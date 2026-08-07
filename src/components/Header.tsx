@@ -26,7 +26,12 @@ export const Header: React.FC = () => {
       <header id="siteHeader" className={isSolid ? 'solid' : ''}>
         <nav className="wrap">
           <a href="#top" className="logo">
-            S &amp; G<span className="sub">BRIDALS ATELIER</span>
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="object-contain"
+              style={{ width: '65px', height: 'auto', display: 'block' }}
+            />
           </a>
           <div className="navlist">
             <a href="#collections">Collections</a>
@@ -39,9 +44,9 @@ export const Header: React.FC = () => {
               Book a Fitting
             </a>
           </div>
-          <button 
-            className="burger" 
-            id="burgerBtn" 
+          <button
+            className="burger"
+            id="burgerBtn"
             aria-label="Open menu"
             onClick={toggleMobileMenu}
           >

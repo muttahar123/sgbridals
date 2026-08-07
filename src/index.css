@@ -823,11 +823,70 @@ section {
   transform: translateX(-50%) translateY(0);
 }
 @media (max-width: 640px) {
-  .option-grid, .slot-grid, .field-row {
-    grid-template-columns: 1fr 1fr;
+  .steps-bar {
+    overflow-x: auto;
+    margin-bottom: 28px;
+    padding-bottom: 2px;
+    gap: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .steps-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .step-pill {
+    flex: 0 0 132px;
+    white-space: nowrap;
+  }
+  .option-grid,
+  .slot-grid,
+  .field-row {
+    grid-template-columns: 1fr;
   }
   .booking-panel {
-    padding: 36px 24px;
+    padding: 30px 18px;
+  }
+  .book-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .book-nav .btn,
+  .book-nav .link-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .sso-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .confirm-box {
+    padding: 8px 0 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .booking-panel {
+    padding: 24px 14px;
+  }
+  .option-card {
+    padding: 18px 16px;
+  }
+  .option-card b {
+    font-size: 16px;
+  }
+  .option-card span,
+  .slot,
+  .field select,
+  .field input,
+  .sso-btn {
+    font-size: 13px;
+  }
+  .step-pill {
+    flex-basis: 120px;
   }
 }
 

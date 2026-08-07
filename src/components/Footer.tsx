@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© 2026 S &amp; G Bridals Atelier. All rights reserved.</span>
+          <span>© 2026 SG Bridals. All rights reserved.</span>
           <div className="social">
             <a href="#" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

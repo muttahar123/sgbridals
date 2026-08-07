@@ -11,7 +11,7 @@ export const Collections: React.FC = () => {
 
       <div className="collection-row reveal">
         <div className="col-panel p1">
-          <div className="tex"></div>
+          <img src="/bridal1.jpg" alt="Bridal collection look one" className="tex object-cover w-full h-full" />
         </div>
         <div className="col-text">
           <span className="idx">01 — Bridal</span>
@@ -23,7 +23,7 @@ export const Collections: React.FC = () => {
 
       <div className="collection-row reverse reveal">
         <div className="col-panel p2">
-          <div className="tex"></div>
+          <img src="/bridal2.jpg" alt="Bridal collection look two" className="tex object-cover w-full h-full" />
         </div>
         <div className="col-text">
           <span className="idx">02 — Formal</span>
@@ -35,7 +35,7 @@ export const Collections: React.FC = () => {
 
       <div className="collection-row reveal">
         <div className="col-panel p3">
-          <div className="tex"></div>
+          <img src="/bridal%203.jpg" alt="Bridal collection look three" className="tex object-cover w-full h-full" />
         </div>
         <div className="col-text">
           <span className="idx">03 — Semi-Formal</span>

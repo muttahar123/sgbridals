@@ -27,9 +27,22 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div> */}
-      <div className="absolute left-1/2 bottom-[34px] -translate-x-1/2 z-20 flex flex-col items-center gap-[10px] text-ivory/60">
+      <div className="scroll-cue">
         <span className="font-sans text-[11.5px] tracking-[0.22em] uppercase font-medium text-inherit">Scroll</span>
-        <div className="w-[1px] h-[46px] bg-ivory/40 overflow-hidden relative">
+        {/* <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          className="h-4 w-4 text-inherit animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 5v14" />
+          <path d="M7 14l5 5 5-5" />
+        </svg> */}
+        <div className="line">
           <div className="absolute top-[-100%] left-0 w-full h-full bg-ivory animate-cue"></div>
         </div>
       </div>
