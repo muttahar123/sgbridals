@@ -240,11 +240,18 @@ nav.wrap {
   background: var(--ink);
 }
 @media (max-width: 980px) {
+  header {
+    padding: 20px 0;
+  }
   .navlist {
+    display: none;
+  }
+  .navcta {
     display: none;
   }
   .burger {
     display: flex;
+    margin-left: auto;
   }
 }
 
@@ -382,6 +389,12 @@ nav.wrap {
 @media (max-width: 700px) {
   .hero h1 {
     font-size: clamp(38px, 11vw, 64px);
+  }
+  .hero-scroll-cue {
+    bottom: 22px;
+  }
+  .hero-scroll-cue .line {
+    height: 34px;
   }
 }
 
@@ -982,6 +995,16 @@ footer {
 @media (max-width: 640px) {
   .wrap {
     padding: 0 24px;
+  }
+  header {
+    padding: 16px 0;
+  }
+  .logo img {
+    width: 54px !important;
+  }
+  #mobileMenu .close {
+    top: 22px;
+    right: 24px;
   }
   section {
     padding: 90px 0;

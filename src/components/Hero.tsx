@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative w-full h-screen min-h-[640px] overflow-hidden flex items-center bg-charcoal">
+    <section className="relative w-full h-[100svh] min-h-[560px] overflow-hidden flex items-center bg-charcoal">
       <video
         autoPlay
         loop
@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
         playsInline
         className="absolute inset-0 min-w-full min-h-full w-full h-full object-cover z-0 pointer-events-none"
       >
-        <source src="https://res.cloudinary.com/dxogrw0zo/video/upload/v1786035950/Confidence_is_the_best_bridal_accessory_sgbridalsofficial_justusweddings__kbspbr.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/do7cqydkm/video/upload/v1786464091/instagood_instagram_instalike_makeup_makeupartist_viral_reels_reelsinstagram_trending.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-[#111110]/30 via-[#111110]/50 to-[#111110]/80 z-10"></div>
 
@@ -27,7 +27,7 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div> */}
-      <div className="scroll-cue">
+      <div className="scroll-cue hero-scroll-cue">
         <span className="font-sans text-[11.5px] tracking-[0.22em] uppercase font-medium text-inherit">Scroll</span>
         {/* <svg
           viewBox="0 0 24 24"
