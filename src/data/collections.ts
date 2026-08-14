@@ -1,0 +1,263 @@
+export type CollectionSlug = 'bridal' | 'formal' | 'semi-formal';
+export type CollectionFilter = 'all' | CollectionSlug;
+
+export interface Dress {
+  id: string;
+  name: string;
+  category: CollectionSlug;
+  collectionTitle: string;
+  price: string;
+  fabric: string;
+  image: string;
+  images: string[];
+}
+
+export interface CollectionItem {
+  slug: CollectionSlug;
+  index: string;
+  title: string;
+  headline: string;
+  description: string;
+  heroImage: string;
+  images: string[];
+  dresses: Dress[];
+}
+
+export const collections: CollectionItem[] = [
+  {
+    slug: 'bridal',
+    index: '01 — Bridal',
+    title: 'The Bridal Line',
+    headline: 'Bridal silhouettes shaped for the ceremony and the celebration.',
+    description:
+      'Hand-crafted gowns with sculpted bodices, refined trains, and couture finishes for your most memorable moments.',
+    heroImage:
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80',
+    ],
+    dresses: [
+      {
+        id: 'bridal-1',
+        name: 'Rosewood Ballgown',
+        category: 'bridal',
+        collectionTitle: 'The Bridal Line',
+        price: 'PKR 245,000',
+        fabric: 'Italian satin',
+        image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'bridal-2',
+        name: 'Aster Lace Gown',
+        category: 'bridal',
+        collectionTitle: 'The Bridal Line',
+        price: 'PKR 280,000',
+        fabric: 'French lace',
+        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'bridal-3',
+        name: 'Velvet Column',
+        category: 'bridal',
+        collectionTitle: 'The Bridal Line',
+        price: 'PKR 230,000',
+        fabric: 'Stretch velvet',
+        image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'bridal-4',
+        name: 'Ivory Pearl A-line',
+        category: 'bridal',
+        collectionTitle: 'The Bridal Line',
+        price: 'PKR 260,000',
+        fabric: 'Pearl tulle',
+        image: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'formal',
+    index: '02 — Formal',
+    title: 'Formal Eveningwear',
+    headline: 'Evening silhouettes that turn every entrance into a statement.',
+    description:
+      'A refined edit of gowns and long dresses ready for grand receptions, galas, and elevated celebrations.',
+    heroImage:
+      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
+    ],
+    dresses: [
+      {
+        id: 'formal-1',
+        name: 'Noir Siren',
+        category: 'formal',
+        collectionTitle: 'Formal Eveningwear',
+        price: 'PKR 170,000',
+        fabric: 'Silk crepe',
+        image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'formal-2',
+        name: 'Midnight drape',
+        category: 'formal',
+        collectionTitle: 'Formal Eveningwear',
+        price: 'PKR 155,000',
+        fabric: 'Crisp chiffon',
+        image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'formal-3',
+        name: 'Ember line',
+        category: 'formal',
+        collectionTitle: 'Formal Eveningwear',
+        price: 'PKR 180,000',
+        fabric: 'Stretch satin',
+        image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'formal-4',
+        name: 'Celia Gown',
+        category: 'formal',
+        collectionTitle: 'Formal Eveningwear',
+        price: 'PKR 165,000',
+        fabric: 'Taffeta',
+        image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'semi-formal',
+    index: '03 — Semi-Formal',
+    title: 'Semi-Formal Edit',
+    headline: 'Light, lovely, and beautifully made for layered celebrations.',
+    description:
+      'Occasion dresses with softer drama and easier movement, crafted to feel polished from morning to night.',
+    heroImage:
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
+    ],
+    dresses: [
+      {
+        id: 'semiformal-1',
+        name: 'Sunlit pleat',
+        category: 'semi-formal',
+        collectionTitle: 'Semi-Formal Edit',
+        price: 'PKR 120,000',
+        fabric: 'Georgette',
+        image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'semiformal-2',
+        name: 'Patina slip',
+        category: 'semi-formal',
+        collectionTitle: 'Semi-Formal Edit',
+        price: 'PKR 110,000',
+        fabric: 'Silk blend',
+        image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'semiformal-3',
+        name: 'Mira gown',
+        category: 'semi-formal',
+        collectionTitle: 'Semi-Formal Edit',
+        price: 'PKR 140,000',
+        fabric: 'Organza',
+        image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+      {
+        id: 'semiformal-4',
+        name: 'Pearl column',
+        category: 'semi-formal',
+        collectionTitle: 'Semi-Formal Edit',
+        price: 'PKR 135,000',
+        fabric: 'Soft satin',
+        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+        ],
+      },
+    ],
+  },
+];
+
+export const allDresses = collections.flatMap((collection) => collection.dresses);

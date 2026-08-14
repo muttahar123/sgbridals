@@ -1,52 +1,11 @@
 import React, { useRef, useState } from 'react';
+import { collections } from '../data/collections';
 
-const collectionData = [
-  {
-    slug: 'bridal',
-    index: '01 — Bridal',
-    title: 'The Bridal Line',
-    description:
-      'Gowns built around silhouette, not trend. Boned bodices, hand-finished hems and necklines drafted to flatter your frame — for the ceremony and the reception.',
-    images: [
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80',
-    ],
-  },
-  {
-    slug: 'formal',
-    index: '02 — Formal',
-    title: 'Formal Eveningwear',
-    description:
-      'Statement pieces for galas, receptions and formal dinners — sculpted lines, directional necklines and structured trains made to order in your size.',
-    images: [
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
-    ],
-  },
-  {
-    slug: 'semi-formal',
-    index: '03 — Semi-Formal',
-    title: 'Semi-Formal Edit',
-    description:
-      'Occasion dresses for engagements, showers and rehearsal dinners — lighter fabrications and softer construction, with the same atelier finish.',
-    images: [
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
-    ],
-  },
-];
-
-interface CollectionsProps {
+interface CollectionSectionProps {
   onOpenCollection: (slug: string) => void;
 }
 
-export const Collections: React.FC<CollectionsProps> = ({ onOpenCollection }) => {
+export const CollectionSection: React.FC<CollectionSectionProps> = ({ onOpenCollection }) => {
   return (
     <section id="collections">
       <div className="wrap section-head reveal">
@@ -55,7 +14,7 @@ export const Collections: React.FC<CollectionsProps> = ({ onOpenCollection }) =>
         <p>Every piece is cut to your measurements and finished by hand — the difference is occasion, fabrication and silhouette.</p>
       </div>
 
-      {collectionData.map((collection, index) => (
+      {collections.map((collection, index) => (
         <CollectionRow
           key={collection.slug}
           collection={collection}
@@ -68,7 +27,7 @@ export const Collections: React.FC<CollectionsProps> = ({ onOpenCollection }) =>
 };
 
 interface CollectionRowProps {
-  collection: (typeof collectionData)[number];
+  collection: (typeof collections)[number];
   reverse: boolean;
   onOpenCollection: (slug: string) => void;
 }
