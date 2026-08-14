@@ -186,6 +186,8 @@ nav.wrap {
   justify-content: space-between;
   gap: 12px;
   min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 .logo {
   font-family: 'Fraunces', serif;
@@ -255,6 +257,8 @@ nav.wrap {
   nav.wrap {
     width: 100%;
     min-width: 0;
+    max-width: 100%;
+    padding: 0 12px;
   }
   .navlist {
     display: none;
@@ -265,6 +269,7 @@ nav.wrap {
   .burger {
     display: flex;
     margin-left: auto;
+    flex-shrink: 0;
   }
 }
 
@@ -936,6 +941,10 @@ section {
   border: none;
   padding: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 .nav-link,
 .mobile-link {
@@ -1470,6 +1479,9 @@ section {
 @media (max-width: 520px) {
   .wrap {
     padding: 0 18px;
+  }
+  nav.wrap {
+    padding: 0 10px;
   }
   .collection-page {
     padding-top: 120px;
