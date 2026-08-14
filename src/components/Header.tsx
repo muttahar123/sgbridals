@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onGoHome: () => void;
+  onGoCollections: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCollections }) => {
   const [isSolid, setIsSolid] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -25,16 +30,16 @@ export const Header: React.FC = () => {
     <>
       <header id="siteHeader" className={isSolid ? 'solid' : ''}>
         <nav className="wrap">
-          <a href="#top" className="logo">
+          <button type="button" className="logo-button" onClick={onGoHome} aria-label="Go to homepage">
             <img
               src="/logo.png"
               alt="Logo"
               className="object-contain"
               style={{ width: '65px', height: 'auto', display: 'block' }}
             />
-          </a>
+          </button>
           <div className="navlist">
-            <a href="#collections">Collections</a>
+            <button type="button" className="nav-link" onClick={onGoCollections}>Collections</button>
             <a href="#process">Atelier</a>
             <a href="#shipping">Shipping</a>
             <a href="#book">Appointments</a>
@@ -61,7 +66,7 @@ export const Header: React.FC = () => {
         <button className="close" id="closeMenu" onClick={closeMobileMenu}>
           Close ✕
         </button>
-        <a href="#collections" onClick={closeMobileMenu}>Collections</a>
+        <button type="button" className="mobile-link" onClick={() => { closeMobileMenu(); onGoCollections(); }}>Collections</button>
         <a href="#process" onClick={closeMobileMenu}>Atelier</a>
         <a href="#shipping" onClick={closeMobileMenu}>Shipping</a>
         <a href="#book" onClick={closeMobileMenu}>Appointments</a>
