@@ -63,12 +63,34 @@ const CollectionRow: React.FC<CollectionRowProps> = ({ collection, reverse, onOp
     dragStartX.current = null;
   };
 
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    dragStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (dragStartX.current === null) {
+      return;
+    }
+
+    const delta = (event.changedTouches[0]?.clientX ?? dragStartX.current) - dragStartX.current;
+    if (delta > 50) {
+      goToPrevious();
+    }
+    if (delta < -50) {
+      goToNext();
+    }
+    dragStartX.current = null;
+  };
+
   return (
     <div className={reverse ? 'collection-row reverse reveal' : 'collection-row reveal'}>
       <div
         className="col-panel"
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        style={{ touchAction: 'pan-y' }}
       >
         <img src={collection.images[activeIndex]} alt={collection.title} className="tex object-cover w-full h-full" />
         <button type="button" className="gallery-arrow prev" onClick={goToPrevious} aria-label="Previous image">
