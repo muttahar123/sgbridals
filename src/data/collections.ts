@@ -27,10 +27,10 @@ export const collections: CollectionItem[] = [
   {
     slug: 'bridal',
     index: '01 — Bridal',
-    title: 'The Bridal Line',
+    title: 'Farshi Bridal Couture',
     headline: 'Bridal silhouettes shaped for the ceremony and the celebration.',
     description:
-      'Hand-crafted gowns with sculpted bodices, refined trains, and couture finishes for your most memorable moments.',
+      'A regal Farshi Bridal ensemble crafted for the bride who appreciates timeless Pakistani craftsmanship. The ensemble combines luxurious fabrics with intricate traditional embellishment, creating an elegant and richly detailed bridal look.',
     heroImage:
       '/banner1-1.jpg',
     images: [
