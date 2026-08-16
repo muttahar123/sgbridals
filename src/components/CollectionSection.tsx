@@ -5,7 +5,7 @@ interface CollectionSectionProps {
   onOpenCollection: (slug: string) => void;
 }
 
-export const CollectionSection: React.FC<CollectionSectionProps> = ({ onOpenCollection }) => {
+export const CollectionSection: React.FC<CollectionSectionProps> = ({ onOpenCollection: _onOpenCollection }) => {
   return (
     <section id="collections">
       <div className="wrap section-head reveal">
@@ -19,7 +19,6 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({ onOpenColl
           key={collection.slug}
           collection={collection}
           reverse={index % 2 !== 0}
-          onOpenCollection={onOpenCollection}
         />
       ))}
     </section>
@@ -29,10 +28,9 @@ export const CollectionSection: React.FC<CollectionSectionProps> = ({ onOpenColl
 interface CollectionRowProps {
   collection: (typeof collections)[number];
   reverse: boolean;
-  onOpenCollection: (slug: string) => void;
 }
 
-const CollectionRow: React.FC<CollectionRowProps> = ({ collection, reverse, onOpenCollection }) => {
+const CollectionRow: React.FC<CollectionRowProps> = ({ collection, reverse }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const dragStartX = useRef<number | null>(null);
 
@@ -82,6 +80,13 @@ const CollectionRow: React.FC<CollectionRowProps> = ({ collection, reverse, onOp
     dragStartX.current = null;
   };
 
+  const activeImage = collection.images[activeIndex];
+  const isVideoSlide = typeof activeImage === 'string' && /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(activeImage);
+
+  const handleDiscoverClick = () => {
+    document.getElementById('book')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className={reverse ? 'collection-row reverse reveal' : 'collection-row reveal'}>
       <div
@@ -92,7 +97,19 @@ const CollectionRow: React.FC<CollectionRowProps> = ({ collection, reverse, onOp
         onTouchEnd={handleTouchEnd}
         style={{ touchAction: 'pan-y' }}
       >
-        <img src={collection.images[activeIndex]} alt={collection.title} className="tex object-cover w-full h-full" />
+        {isVideoSlide ? (
+          <video
+            src={activeImage}
+            className="tex object-cover w-full h-full"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          />
+        ) : (
+          <img src={activeImage} alt={collection.title} className="tex object-cover w-full h-full" />
+        )}
         <button type="button" className="gallery-arrow prev" onClick={goToPrevious} aria-label="Previous image">
           ‹
         </button>
@@ -109,7 +126,7 @@ const CollectionRow: React.FC<CollectionRowProps> = ({ collection, reverse, onOp
         <span className="idx">{collection.index}</span>
         <h3>{collection.title}</h3>
         <p>{collection.description}</p>
-        <button type="button" className="btn" onClick={() => onOpenCollection(collection.slug)}>
+        <button type="button" className="btn" onClick={handleDiscoverClick}>
           Discover {collection.title.split(' ')[0]} →
         </button>
       </div>

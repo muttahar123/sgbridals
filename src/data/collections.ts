@@ -32,12 +32,12 @@ export const collections: CollectionItem[] = [
     description:
       'Hand-crafted gowns with sculpted bodices, refined trains, and couture finishes for your most memorable moments.',
     heroImage:
-      'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
+      '/banner1-1.jpg',
     images: [
-      'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1583939003579-94ddd4b0d9d5?auto=format&fit=crop&w=1200&q=80',
+      '/banner1-1.jpg',
+      '/banner1-2.jpg',
+      '/banner1-3.jpg',
+      '/set1-vid.mp4',
     ],
     dresses: [
       {
@@ -110,13 +110,13 @@ export const collections: CollectionItem[] = [
     description:
       'A refined edit of gowns and long dresses ready for grand receptions, galas, and elevated celebrations.',
     heroImage:
-      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1583939003579-94ddd4b0d9d5?auto=format&fit=crop&w=1200&q=80',
-    ],
+      '/bridal2-1.jpg',
+        images: [
+          '/bridal2-1.jpg',
+          '/bridal2-2.jpg',
+          '/bridal2-3.jpg',
+          '/bridal2-4.jpg',
+        ],
     dresses: [
       {
         id: 'formal-1',
@@ -190,7 +190,7 @@ export const collections: CollectionItem[] = [
     heroImage:
       'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
     images: [
-      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
+      '/bridal3-1.jpg',
       'https://images.unsplash.com/photo-1583939003579-94ddd4b0d9d5?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
