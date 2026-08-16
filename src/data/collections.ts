@@ -104,7 +104,7 @@ export const collections: CollectionItem[] = [
   },
   {
     slug: 'formal',
-    index: '02 — Formal',
+    index: '02 — Bridal',
     title: 'Formal Eveningwear',
     headline: 'Evening silhouettes that turn every entrance into a statement.',
     description:
@@ -115,7 +115,7 @@ export const collections: CollectionItem[] = [
           '/bridal2-1.jpg',
           '/bridal2-2.jpg',
           '/bridal2-3.jpg',
-          '/bridal2-4.jpg',
+          '/bridal2.mp4',
         ],
     dresses: [
       {
@@ -182,18 +182,18 @@ export const collections: CollectionItem[] = [
   },
   {
     slug: 'semi-formal',
-    index: '03 — Semi-Formal',
+    index: '03 — Bridal',
     title: 'Semi-Formal Edit',
     headline: 'Light, lovely, and beautifully made for layered celebrations.',
     description:
       'Occasion dresses with softer drama and easier movement, crafted to feel polished from morning to night.',
     heroImage:
-      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
+      '/bridal3-1.jpg',
     images: [
       '/bridal3-1.jpg',
-      'https://images.unsplash.com/photo-1583939003579-94ddd4b0d9d5?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
+      '/bridal3-2.jpg',
+      '/bridal3-3.jpg',
+      '/bridal3.mp4',
     ],
     dresses: [
       {
