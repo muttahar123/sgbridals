@@ -62,6 +62,13 @@ function App() {
   };
 
   const openCollections = () => {
+    if (activeView === 'home') {
+      document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setSelectedCollection(null);
+      setSelectedProduct(null);
+      return;
+    }
+
     setActiveView('collections');
     setSelectedCollection(null);
     setSelectedProduct(null);

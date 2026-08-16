@@ -34,9 +34,9 @@ export const collections: CollectionItem[] = [
     heroImage:
       '/banner1-1.jpg',
     images: [
-      '/banner1-1.jpg',
-      '/banner1-2.jpg',
-      '/banner1-3.jpg',
+      '/bridal1-1.jpg',
+      '/bridal1-2.jpg',
+      '/bridal1-3.jpg',
       '/set1-vid.mp4',
     ],
     dresses: [
