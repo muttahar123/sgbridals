@@ -10,12 +10,19 @@ interface ProductDetailPageProps {
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, onBackToCollection, onBackHome }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  if (!product) {
-    return null;
-  }
+  const collection = useMemo(() => {
+    if (!product) {
+      return null;
+    }
 
-  const collection = collections.find((item: CollectionItem) => item.slug === product.category) ?? null;
+    return collections.find((item: CollectionItem) => item.slug === product.category) ?? null;
+  }, [product]);
+
   const galleryImages = useMemo(() => {
+    if (!product) {
+      return [];
+    }
+
     if (product.images && product.images.length > 0) {
       return product.images;
     }
@@ -24,6 +31,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
     }
     return [product.image];
   }, [collection, product]);
+
+  if (!product) {
+    return null;
+  }
 
   const activeImage = galleryImages[activeImageIndex] ?? galleryImages[0];
 

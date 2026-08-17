@@ -127,7 +127,7 @@ const CollectionRow: React.FC<CollectionRowProps> = ({ collection, reverse }) =>
         <h3>{collection.title}</h3>
         <p>{collection.description}</p>
         <button type="button" className="btn" onClick={handleDiscoverClick}>
-          Appoinment {collection.title.split(' ')[0]} →
+          Book the Appointment →
         </button>
       </div>
     </div>

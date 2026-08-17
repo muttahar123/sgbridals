@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
         <div className="footer-grid">
           <div>
             <div className="foot-logo">
-              S &amp; G <span style={{ fontSize: '13px', color: '#f7f4ee88' }}>Bridals Atelier</span>
+              SG<span style={{ fontSize: '13px', color: '#f7f4ee88' }}>Bridals</span>
             </div>
             <p className="foot-about">
               Bespoke bridal, formal and semi-formal couture — designed and hand-finished in the atelier, shipped worldwide.
