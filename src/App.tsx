@@ -96,12 +96,7 @@ function App() {
         </div>
       )}
 
-      <Layout
-        onGoHome={openHome}
-        onGoCollections={openCollections}
-        onOpenCollection={openSelectedCollection}
-        onOpenProduct={openProductDetail}
-      >
+      <Layout onGoHome={openHome} onGoCollections={openCollections}>
         {activeView === 'home' && <HomePage onOpenCollection={openSelectedCollection} />}
 
         {activeView === 'collections' && <CollectionsOverviewPage onOpenCollection={openSelectedCollection} />}

@@ -190,9 +190,9 @@ header.solid {
   border-color: var(--line);
 }
 .top-contact-bar {
-  background: rgba(17, 17, 16, 0.94);
-  color: var(--ivory);
-  border-bottom: 1px solid rgba(247, 244, 238, 0.13);
+  background: rgba(255, 253, 249, 0.96);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 .top-contact-inner {
   width: 100%;
@@ -209,7 +209,7 @@ header.solid {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: rgba(247, 244, 238, 0.9);
+  color: var(--ink);
   font-size: 11px;
   line-height: 1;
   letter-spacing: 0.14em;
@@ -225,7 +225,7 @@ header.solid {
 .top-contact-divider {
   width: 1px;
   height: 14px;
-  background: rgba(247, 244, 238, 0.22);
+  background: var(--line);
 }
 nav.wrap {
   display: flex;
@@ -324,7 +324,7 @@ header.solid nav.wrap {
   background: rgba(255, 253, 249, 0.98);
   border: 1px solid var(--line);
   box-shadow: 0 26px 70px rgba(17, 17, 16, 0.18);
-  padding: 18px;
+  padding: 14px;
   animation: searchIn .22s ease;
 }
 header.solid ~ .site-search-panel {
