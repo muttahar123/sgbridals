@@ -105,10 +105,10 @@ export const collections: CollectionItem[] = [
   {
     slug: 'formal',
     index: '02 — Bridal',
-    title: 'Formal Eveningwear',
+    title: 'Zar-e-Mehroon',
     headline: 'Evening silhouettes that turn every entrance into a statement.',
     description:
-      'A refined edit of gowns and long dresses ready for grand receptions, galas, and elevated celebrations.',
+      'A captivating expression of timeless bridal grandeur, Zar-e-Mehroon brings together rich rust tones and antique gold craftsmanship. Intricately embellished with traditional motifs and refined detailing, the ensemble captures the warmth, depth, and regal beauty of classic Pakistani bridal couture.',
     heroImage:
       '/bridal2-1.jpg',
         images: [
@@ -183,10 +183,10 @@ export const collections: CollectionItem[] = [
   {
     slug: 'semi-formal',
     index: '03 — Bridal',
-    title: 'Semi-Formal Edit',
-    headline: 'Light, lovely, and beautifully made for layered celebrations.',
+     title: 'Golden Farshi Bridal',
+    headline: 'Evening silhouettes that turn every entrance into a statement.',
     description:
-      'Occasion dresses with softer drama and easier movement, crafted to feel polished from morning to night.',
+      'A fusion of luminous gold and rich rust, elevated with intricate embellishment and graceful detailing. The flowing sharara silhouette adds movement and grandeur, creating a timeless bridal look with a warm, luxurious finish.',
     heroImage:
       '/bridal3-1.jpg',
     images: [
