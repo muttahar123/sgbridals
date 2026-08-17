@@ -27,10 +27,10 @@ export const collections: CollectionItem[] = [
   {
     slug: 'bridal',
     index: '01 — Bridal',
-    title: 'Farshi Bridal Couture',
+    title: 'Mehrunisa',
     headline: 'Bridal silhouettes shaped for the ceremony and the celebration.',
     description:
-      'A regal Farshi Bridal ensemble crafted for the bride who appreciates timeless Pakistani craftsmanship. The ensemble combines luxurious fabrics with intricate traditional embellishment, creating an elegant and richly detailed bridal look.',
+      'A regal celebration of deep maroon and antique gold, Mehroonisa embodies the timeless grandeur of Pakistani bridal couture. Intricate traditional embroidery, delicate floral motifs, and rich embellishments come together across a graceful Farshi silhouette, creating depth and movement with every layer.',
     heroImage:
       '/banner1-1.jpg',
     images: [
@@ -183,10 +183,10 @@ export const collections: CollectionItem[] = [
   {
     slug: 'semi-formal',
     index: '03 — Bridal',
-     title: 'Golden Farshi Bridal',
+     title: 'Gul-e-Zar',
     headline: 'Evening silhouettes that turn every entrance into a statement.',
     description:
-      'A fusion of luminous gold and rich rust, elevated with intricate embellishment and graceful detailing. The flowing sharara silhouette adds movement and grandeur, creating a timeless bridal look with a warm, luxurious finish.',
+      'A graceful ode to timeless Pakistani bridal artistry, Gul-e-Zar brings together luminous ivory, antique gold, and rich rust accents in a lavish Farshi silhouette. Intricate floral embroidery flows across the ensemble, enriched with delicate embellishments and heritage-inspired detailing.',
     heroImage:
       '/bridal3-1.jpg',
     images: [
