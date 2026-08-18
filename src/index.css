@@ -875,17 +875,105 @@ section {
 
 /* ---------- Booking ---------- */
 .book .wrap {
-  max-width: 900px;
+  max-width: 1120px;
 }
 .booking-panel {
   border: 1px solid var(--line);
   padding: 56px 60px;
   background: #fffdf9;
 }
+.cal-booking-panel {
+  padding: 0;
+  overflow: hidden;
+}
+.booking-context-steps {
+  margin: 0;
+  padding: 28px 34px 0;
+  background: #fffdf9;
+}
+.booking-context-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 760px;
+}
+.booking-preferences {
+  padding: 38px 34px;
+  border-right: 1px solid var(--line);
+}
+.booking-option-grid {
+  grid-template-columns: 1fr;
+  margin-top: 24px;
+}
+.booking-field-row {
+  grid-template-columns: 1fr;
+  margin-top: 28px;
+}
+.booking-summary {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.booking-summary strong {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 400;
+  margin-top: 10px;
+}
+.booking-summary p {
+  margin: 8px 0 0;
+  color: var(--stone);
+  font-size: 14px;
+}
+.cal-booking-shell {
+  min-width: 0;
+  background: #fffdf9;
+}
+.cal-booking-frame {
+  display: block;
+  width: 100%;
+  height: min(820px, 92vh);
+  min-height: 700px;
+  border: 0;
+  background: #fffdf9;
+}
+.cal-booking-actions {
+  display: flex;
+  justify-content: center;
+  padding: 22px 24px 28px;
+  border-top: 1px solid var(--line);
+  background: #fffdf9;
+}
+.cal-booking-placeholder {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px;
+  background:
+    linear-gradient(rgba(17, 17, 16, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 16, 0.04) 1px, transparent 1px),
+    #fffdf9;
+  background-size: 34px 34px;
+}
+.cal-booking-placeholder h3 {
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.1;
+  margin-top: 14px;
+}
+.cal-booking-placeholder p {
+  color: var(--stone);
+  max-width: 32ch;
+  margin: 14px 0 0;
+}
 .steps-bar {
   display: flex;
   border-bottom: 1px solid var(--line);
   margin-bottom: 40px;
+}
+.steps-bar.booking-context-steps {
+  margin-bottom: 0;
 }
 .step-pill {
   flex: 1;
@@ -1095,6 +1183,22 @@ section {
   transform: translateX(-50%) translateY(0);
 }
 @media (max-width: 640px) {
+  .booking-context-steps {
+    padding: 24px 18px 0;
+  }
+  .booking-context-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .booking-preferences {
+    padding: 28px 18px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .cal-booking-placeholder {
+    min-height: 360px;
+    padding: 30px 18px;
+  }
   .steps-bar {
     overflow-x: auto;
     margin-bottom: 28px;
@@ -1117,6 +1221,16 @@ section {
   }
   .booking-panel {
     padding: 30px 18px;
+  }
+  .cal-booking-panel {
+    padding: 0;
+  }
+  .cal-booking-frame {
+    min-height: 740px;
+    height: 84vh;
+  }
+  .cal-booking-actions {
+    padding: 18px;
   }
   .book-nav {
     flex-direction: column;
@@ -1143,6 +1257,15 @@ section {
 @media (max-width: 420px) {
   .booking-panel {
     padding: 24px 14px;
+  }
+  .cal-booking-panel {
+    padding: 0;
+  }
+  .booking-preferences {
+    padding: 24px 14px;
+  }
+  .booking-context-steps {
+    padding: 22px 14px 0;
   }
   .option-card {
     padding: 18px 16px;
