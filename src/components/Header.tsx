@@ -1,11 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { allDresses, collections } from '../data/collections';
+import type { CollectionSlug, Dress } from '../data/collections';
 
 interface HeaderProps {
   onGoHome: () => void;
   onGoCollections: () => void;
+  onOpenCollection: (slug: CollectionSlug) => void;
+  onOpenProduct: (product: Dress) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCollections }) => {
+export const Header: React.FC<HeaderProps> = ({
+  onGoHome,
+  onGoCollections,
+  onOpenCollection,
+  onOpenProduct,
+}) => {
   const [isSolid, setIsSolid] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -43,6 +52,33 @@ export const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCollections }) => 
     };
   }, [isSearchOpen]);
 
+  const normalizeSearchValue = (value: string) => value.toLowerCase().replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
+  const normalizedQuery = normalizeSearchValue(searchQuery);
+
+  const collectionResults = useMemo(() => {
+    if (!normalizedQuery) {
+      return collections;
+    }
+
+    return collections.filter((collection) => {
+      return [collection.title, collection.headline, collection.description, collection.index]
+        .some((value) => normalizeSearchValue(value).includes(normalizedQuery));
+    });
+  }, [normalizedQuery]);
+
+  const dressResults = useMemo(() => {
+    if (!normalizedQuery) {
+      return allDresses.slice(0, 4);
+    }
+
+    return allDresses
+      .filter((dress) => {
+        return [dress.name, dress.collectionTitle, dress.fabric, dress.price]
+          .some((value) => normalizeSearchValue(value).includes(normalizedQuery));
+      })
+      .slice(0, 5);
+  }, [normalizedQuery]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -61,6 +97,21 @@ export const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCollections }) => 
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (collectionResults[0]) {
+      closeSearch();
+      onOpenCollection(collectionResults[0].slug);
+      return;
+    }
+
+    if (dressResults[0]) {
+      closeSearch();
+      onOpenProduct(dressResults[0]);
+      return;
+    }
+
+    closeSearch();
+    onGoCollections();
   };
 
   return (
@@ -170,6 +221,51 @@ export const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCollections }) => 
               )}
             </form>
 
+            <div className="site-search-results">
+              <div className="search-result-group">
+                <span className="search-result-label">Collections</span>
+                {collectionResults.length > 0 ? (
+                  collectionResults.slice(0, 3).map((collection) => (
+                    <button
+                      key={collection.slug}
+                      type="button"
+                      className="search-result-row"
+                      onClick={() => {
+                        closeSearch();
+                        onOpenCollection(collection.slug);
+                      }}
+                    >
+                      <span>{collection.title}</span>
+                      <small>{collection.headline}</small>
+                    </button>
+                  ))
+                ) : (
+                  <p className="search-empty">No collection found.</p>
+                )}
+              </div>
+
+              <div className="search-result-group">
+                <span className="search-result-label">Looks</span>
+                {dressResults.length > 0 ? (
+                  dressResults.map((dress) => (
+                    <button
+                      key={dress.id}
+                      type="button"
+                      className="search-result-row"
+                      onClick={() => {
+                        closeSearch();
+                        onOpenProduct(dress);
+                      }}
+                    >
+                      <span>{dress.name}</span>
+                      <small>{dress.collectionTitle} · {dress.price}</small>
+                    </button>
+                  ))
+                ) : (
+                  <p className="search-empty">No dress found.</p>
+                )}
+              </div>
+            </div>
           </div>
         </>
       )}
