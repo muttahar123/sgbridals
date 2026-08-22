@@ -5,9 +5,15 @@ interface ProductDetailPageProps {
   product: Dress | null;
   onBackToCollection: () => void;
   onBackHome: () => void;
+  onBookAppointment: () => void;
 }
 
-export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, onBackToCollection, onBackHome }) => {
+export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
+  product,
+  onBackToCollection,
+  onBackHome,
+  onBookAppointment,
+}) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
@@ -127,7 +133,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
               <button type="button" className="btn btn-inline" onClick={onBackHome}>Back Home</button>
             </div>
 
-            <button type="button" className="btn-block product-cta">Book this look</button>
+            <button type="button" className="btn-block product-cta" onClick={onBookAppointment}>Book this look</button>
           </div>
         </div>
       </div>

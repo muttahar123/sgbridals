@@ -1,27 +1,36 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
+import { CollectionDetailPage } from './pages/CollectionDetailPage';
 import { CollectionsOverviewPage } from './pages/CollectionsOverviewPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
-import { allDresses, type Dress } from './data/collections';
+import { allDresses, collections, type CollectionItem, type Dress } from './data/collections';
 
-type ActiveView = 'home' | 'collections' | 'product';
+type ActiveView = 'home' | 'collections' | 'collection' | 'product';
 
 const getProductPath = (product: Dress) => `/products/${product.id}`;
+const getCollectionPath = (collection: CollectionItem) => `/collections/${collection.slug}`;
 
-const getViewFromPath = (): { view: ActiveView; product: Dress | null } => {
+const getViewFromPath = (): { view: ActiveView; collection: CollectionItem | null; product: Dress | null } => {
   const productMatch = window.location.pathname.match(/^\/products\/([^/]+)$/);
 
   if (productMatch) {
     const product = allDresses.find((item) => item.id === productMatch[1]) ?? null;
-    return { view: product ? 'product' : 'collections', product };
+    return { view: product ? 'product' : 'collections', collection: null, product };
+  }
+
+  const collectionMatch = window.location.pathname.match(/^\/collections\/([^/]+)$/);
+
+  if (collectionMatch) {
+    const collection = collections.find((item) => item.slug === collectionMatch[1]) ?? null;
+    return { view: collection ? 'collection' : 'collections', collection, product: null };
   }
 
   if (window.location.pathname === '/collections') {
-    return { view: 'collections', product: null };
+    return { view: 'collections', collection: null, product: null };
   }
 
-  return { view: 'home', product: null };
+  return { view: 'home', collection: null, product: null };
 };
 
 function App() {
@@ -29,6 +38,7 @@ function App() {
   const [preloaderRemoved, setPreloaderRemoved] = useState(false);
   const initialRoute = useMemo(getViewFromPath, []);
   const [activeView, setActiveView] = useState<ActiveView>(initialRoute.view);
+  const [selectedCollection, setSelectedCollection] = useState<CollectionItem | null>(initialRoute.collection);
   const [selectedProduct, setSelectedProduct] = useState<Dress | null>(initialRoute.product);
 
   useEffect(() => {
@@ -71,6 +81,7 @@ function App() {
     const handlePopState = () => {
       const route = getViewFromPath();
       setActiveView(route.view);
+      setSelectedCollection(route.collection);
       setSelectedProduct(route.product);
       window.scrollTo({ top: 0, behavior: 'auto' });
     };
@@ -88,6 +99,7 @@ function App() {
   const openHome = () => {
     navigateTo('/');
     setActiveView('home');
+    setSelectedCollection(null);
     setSelectedProduct(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -95,24 +107,41 @@ function App() {
   const openCollections = () => {
     navigateTo('/collections');
     setActiveView('collections');
+    setSelectedCollection(null);
     setSelectedProduct(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const openSelectedCollection = (slug: string) => {
-    navigateTo('/collections');
-    setActiveView('collections');
+    const collection = collections.find((item) => item.slug === slug) ?? null;
+    if (!collection) {
+      openCollections();
+      return;
+    }
+
+    navigateTo(getCollectionPath(collection));
+    setSelectedCollection(collection);
     setSelectedProduct(null);
-    window.setTimeout(() => {
-      document.getElementById(`collection-${slug}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 0);
+    setActiveView('collection');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const openProductDetail = (product: Dress) => {
     navigateTo(getProductPath(product));
+    setSelectedCollection(null);
     setSelectedProduct(product);
     setActiveView('product');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openAppointment = () => {
+    navigateTo('/');
+    setActiveView('home');
+    setSelectedCollection(null);
+    setSelectedProduct(null);
+    window.setTimeout(() => {
+      document.getElementById('book')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
   };
 
   return (
@@ -133,7 +162,17 @@ function App() {
 
         {activeView === 'collections' && (
           <CollectionsOverviewPage
+            onOpenCollection={openSelectedCollection}
             onOpenProduct={openProductDetail}
+          />
+        )}
+
+        {activeView === 'collection' && (
+          <CollectionDetailPage
+            collection={selectedCollection}
+            onBackToCollections={openCollections}
+            onBackHome={openHome}
+            onBookAppointment={openAppointment}
           />
         )}
 
@@ -142,6 +181,7 @@ function App() {
             product={selectedProduct}
             onBackToCollection={openCollections}
             onBackHome={openHome}
+            onBookAppointment={openAppointment}
           />
         )}
       </Layout>

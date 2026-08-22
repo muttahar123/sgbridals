@@ -2,10 +2,12 @@ import React, { useMemo, useState } from 'react';
 import { allDresses, collections, type Dress } from '../data/collections';
 
 interface CollectionsOverviewPageProps {
+  onOpenCollection: (slug: string) => void;
   onOpenProduct: (product: Dress) => void;
 }
 
 export const CollectionsOverviewPage: React.FC<CollectionsOverviewPageProps> = ({
+  onOpenCollection,
   onOpenProduct,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,7 +36,12 @@ export const CollectionsOverviewPage: React.FC<CollectionsOverviewPageProps> = (
 
         <div className="collection-list-grid">
           {collections.map((collection) => (
-            <article id={`collection-${collection.slug}`} key={collection.slug} className="collection-preview-card reveal">
+            <article
+              id={`collection-${collection.slug}`}
+              key={collection.slug}
+              className="collection-preview-card reveal"
+              onClick={() => onOpenCollection(collection.slug)}
+            >
               <div className="collection-preview-image">
                 <img src={collection.heroImage} alt={collection.title} />
               </div>
@@ -45,9 +52,12 @@ export const CollectionsOverviewPage: React.FC<CollectionsOverviewPageProps> = (
                 <button
                   type="button"
                   className="btn"
-                  onClick={() => document.getElementById('all-dresses')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onOpenCollection(collection.slug);
+                  }}
                 >
-                  View Dresses →
+                  View Collection →
                 </button>
               </div>
             </article>
