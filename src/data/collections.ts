@@ -1,5 +1,4 @@
 export type CollectionSlug = 'bridal' | 'formal' | 'semi-formal';
-export type CollectionFilter = 'all' | CollectionSlug;
 
 export interface DressDetail {
   label: string;

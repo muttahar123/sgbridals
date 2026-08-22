@@ -2,21 +2,34 @@ import { useEffect, useMemo, useState } from 'react';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
 import { CollectionsOverviewPage } from './pages/CollectionsOverviewPage';
-import { CollectionPage } from './pages/CollectionPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
-import { collections, type Dress } from './data/collections';
+import { allDresses, type Dress } from './data/collections';
+
+type ActiveView = 'home' | 'collections' | 'product';
+
+const getProductPath = (product: Dress) => `/products/${product.id}`;
+
+const getViewFromPath = (): { view: ActiveView; product: Dress | null } => {
+  const productMatch = window.location.pathname.match(/^\/products\/([^/]+)$/);
+
+  if (productMatch) {
+    const product = allDresses.find((item) => item.id === productMatch[1]) ?? null;
+    return { view: product ? 'product' : 'collections', product };
+  }
+
+  if (window.location.pathname === '/collections') {
+    return { view: 'collections', product: null };
+  }
+
+  return { view: 'home', product: null };
+};
 
 function App() {
   const [preloaderGone, setPreloaderGone] = useState(false);
   const [preloaderRemoved, setPreloaderRemoved] = useState(false);
-  const [activeView, setActiveView] = useState<'home' | 'collections' | 'collection' | 'product'>('home');
-  const [selectedCollection, setSelectedCollection] = useState<string | null>(null);
-  const [selectedProduct, setSelectedProduct] = useState<Dress | null>(null);
-
-  const selectedCollectionData = useMemo(
-    () => collections.find((item) => item.slug === selectedCollection) ?? null,
-    [selectedCollection]
-  );
+  const initialRoute = useMemo(getViewFromPath, []);
+  const [activeView, setActiveView] = useState<ActiveView>(initialRoute.view);
+  const [selectedProduct, setSelectedProduct] = useState<Dress | null>(initialRoute.product);
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -54,35 +67,49 @@ function App() {
     return () => revealObserver.disconnect();
   }, [preloaderRemoved, activeView]);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      const route = getViewFromPath();
+      setActiveView(route.view);
+      setSelectedProduct(route.product);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateTo = (path: string) => {
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+    }
+  };
+
   const openHome = () => {
+    navigateTo('/');
     setActiveView('home');
-    setSelectedCollection(null);
     setSelectedProduct(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const openCollections = () => {
-    if (activeView === 'home') {
-      document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setSelectedCollection(null);
-      setSelectedProduct(null);
-      return;
-    }
-
+    navigateTo('/collections');
     setActiveView('collections');
-    setSelectedCollection(null);
     setSelectedProduct(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const openSelectedCollection = (slug: string) => {
-    setSelectedCollection(slug);
+    navigateTo('/collections');
+    setActiveView('collections');
     setSelectedProduct(null);
-    setActiveView('collection');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.setTimeout(() => {
+      document.getElementById(`collection-${slug}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
   };
 
   const openProductDetail = (product: Dress) => {
+    navigateTo(getProductPath(product));
     setSelectedProduct(product);
     setActiveView('product');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -104,13 +131,8 @@ function App() {
       >
         {activeView === 'home' && <HomePage onOpenCollection={openSelectedCollection} />}
 
-        {activeView === 'collections' && <CollectionsOverviewPage onOpenCollection={openSelectedCollection} />}
-
-        {activeView === 'collection' && (
-          <CollectionPage
-            collection={selectedCollectionData}
-            onBackToCollections={openCollections}
-            onBackHome={openHome}
+        {activeView === 'collections' && (
+          <CollectionsOverviewPage
             onOpenProduct={openProductDetail}
           />
         )}
@@ -118,13 +140,7 @@ function App() {
         {activeView === 'product' && (
           <ProductDetailPage
             product={selectedProduct}
-            onBackToCollection={() => {
-              if (selectedCollection) {
-                setActiveView('collection');
-              } else {
-                openCollections();
-              }
-            }}
+            onBackToCollection={openCollections}
             onBackHome={openHome}
           />
         )}
