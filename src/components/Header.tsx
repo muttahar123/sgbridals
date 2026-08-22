@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
 
     return allDresses
       .filter((dress) => {
-        return [dress.name, dress.collectionTitle, dress.fabric, dress.price]
+        return [dress.name, dress.collectionTitle, dress.fabric, dress.description]
           .some((value) => normalizeSearchValue(value).includes(normalizedQuery));
       })
       .slice(0, 5);
@@ -258,7 +258,7 @@ export const Header: React.FC<HeaderProps> = ({
                       }}
                     >
                       <span>{dress.name}</span>
-                      <small>{dress.collectionTitle} · {dress.price}</small>
+                      <small>{dress.collectionTitle} · {dress.fabric}</small>
                     </button>
                   ))
                 ) : (

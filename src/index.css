@@ -1641,9 +1641,10 @@ section {
   font-size: 13px;
 }
 .dress-stats strong {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 .empty-state {
   grid-column: 1 / -1;
@@ -1744,6 +1745,9 @@ section {
   font-size: clamp(28px, 3vw, 40px);
   font-weight: 400;
 }
+.product-fabric-row strong {
+  font-size: clamp(22px, 2.4vw, 32px);
+}
 .product-price-row span {
   font-size: 13px;
   letter-spacing: 0.08em;
@@ -1756,9 +1760,28 @@ section {
   font-size: 16px;
   max-width: 52ch;
 }
+.product-description p {
+  margin: 0 0 14px;
+}
+.product-description p:last-of-type {
+  margin-bottom: 0;
+}
+.description-toggle {
+  margin-top: 16px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding: 0 0 3px;
+}
+.description-toggle:hover {
+  color: var(--stone);
+}
 .product-meta-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
   margin-top: 28px;
   padding: 20px 0;
@@ -1776,7 +1799,7 @@ section {
 .product-meta-grid strong {
   font-size: 15px;
   font-weight: 500;
-  text-transform: capitalize;
+  line-height: 1.4;
 }
 .product-actions {
   display: flex;

@@ -21,7 +21,9 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({ collection, onBa
       const matchesSearch =
         searchValue === '' ||
         dress.name.toLowerCase().includes(searchValue) ||
-        dress.collectionTitle.toLowerCase().includes(searchValue);
+        dress.collectionTitle.toLowerCase().includes(searchValue) ||
+        dress.fabric.toLowerCase().includes(searchValue) ||
+        dress.description.toLowerCase().includes(searchValue);
       return categoryMatch && matchesSearch;
     });
   }, [collection, filter, searchTerm]);
@@ -100,7 +102,7 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({ collection, onBa
                   <h3>{dress.name}</h3>
                   <div className="dress-stats">
                     <span>{dress.fabric}</span>
-                    <strong>{dress.price}</strong>
+                    <strong>View details</strong>
                   </div>
                 </div>
               </article>

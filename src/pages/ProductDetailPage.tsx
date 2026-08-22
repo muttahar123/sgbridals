@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { collections, type CollectionItem, type Dress } from '../data/collections';
 
 interface ProductDetailPageProps {
@@ -9,6 +9,7 @@ interface ProductDetailPageProps {
 
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, onBackToCollection, onBackHome }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const collection = useMemo(() => {
     if (!product) {
@@ -32,11 +33,19 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
     return [product.image];
   }, [collection, product]);
 
+  useEffect(() => {
+    setActiveImageIndex(0);
+    setIsDescriptionExpanded(false);
+  }, [product?.id]);
+
   if (!product) {
     return null;
   }
 
   const activeImage = galleryImages[activeImageIndex] ?? galleryImages[0];
+  const descriptionSections = product.description.split('\n\n').filter(Boolean);
+  const visibleDescriptionSections = isDescriptionExpanded ? descriptionSections : descriptionSections.slice(0, 1);
+  const canExpandDescription = descriptionSections.length > 1;
 
   const goToPrevious = () => {
     setActiveImageIndex((current) => (current === 0 ? galleryImages.length - 1 : current - 1));
@@ -84,28 +93,33 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
           <div className="product-info">
             <span className="label">{product.collectionTitle}</span>
             <h1>{product.name}</h1>
-            <div className="product-price-row">
-              <strong>{product.price}</strong>
-              <span>{product.fabric}</span>
+            <div className="product-price-row product-fabric-row">
+              <strong>{product.fabric}</strong>
+              <span>{product.collectionTitle}</span>
             </div>
 
-            <p className="product-description">
-              Crafted to move beautifully through your celebration with sculpted tailoring, couture finishing, and a silhouette chosen to flatter with ease.
-            </p>
+            <div className="product-description">
+              {visibleDescriptionSections.map((section) => (
+                <p key={section}>{section}</p>
+              ))}
+              {canExpandDescription && (
+                <button
+                  type="button"
+                  className="description-toggle"
+                  onClick={() => setIsDescriptionExpanded((current) => !current)}
+                >
+                  {isDescriptionExpanded ? 'Show Less' : 'More'}
+                </button>
+              )}
+            </div>
 
             <div className="product-meta-grid">
-              <div>
-                <span className="meta-label">Category</span>
-                <strong>{product.category}</strong>
-              </div>
-              <div>
-                <span className="meta-label">Finish</span>
-                <strong>Hand-finished</strong>
-              </div>
-              <div>
-                <span className="meta-label">Made for</span>
-                <strong>Custom fittings</strong>
-              </div>
+              {product.details.map((detail) => (
+                <div key={detail.label}>
+                  <span className="meta-label">{detail.label}</span>
+                  <strong>{detail.value}</strong>
+                </div>
+              ))}
             </div>
 
             <div className="product-actions">
